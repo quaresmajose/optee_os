@@ -151,6 +151,7 @@ $(eval $(call cryphw-enable-drv-hw, DSA))
 
 ifneq ($(filter y, $(CFG_MX8QM) $(CFG_MX8QX) $(CFG_MX8DXL)), y)
 $(eval $(call cryphw-enable-drv-hw, MP))
+CFG_PTA_MP ?= y
 endif
 
 # Define the RSA Private Key Format used by the CAAM
