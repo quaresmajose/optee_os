@@ -22,6 +22,7 @@ ifeq ($(CFG_NXP_CAAM),y)
 # DBG_DH     BIT32(13) // DH Trace
 # DBG_DSA    BIT32(14) // DSA trace
 # DBG_MP     BIT32(15) // MP trace
+# DBG_SM     BIT32(16) // SM trace
 
 CFG_DBG_CAAM_TRACE ?= 0x2
 CFG_DBG_CAAM_DESC ?= 0x0
@@ -141,6 +142,7 @@ $(eval $(call cryphw-enable-drv-hw, HASH))
 $(eval $(call cryphw-enable-drv-hw, CIPHER))
 $(call force, CFG_NXP_CAAM_HMAC_DRV,y)
 $(call force, CFG_NXP_CAAM_CMAC_DRV,y)
+$(eval $(call cryphw-enable-drv-hw, SM))
 
 ifeq ($(CFG_LS),y)
 
