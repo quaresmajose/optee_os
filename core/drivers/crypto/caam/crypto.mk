@@ -93,9 +93,6 @@ else
 $(error Unsupported PLATFORM_FLAVOR "$(PLATFORM_FLAVOR)")
 endif
 
-# Enable the BLOB module used for the hardware unique key
-CFG_NXP_CAAM_BLOB_DRV ?= y
-
 ifeq ($(CFG_LS),y)
 CFG_CRYPTO_DRIVER ?= y
 CFG_CAAM_64BIT ?= y
@@ -143,6 +140,7 @@ $(eval $(call cryphw-enable-drv-hw, CIPHER))
 $(call force, CFG_NXP_CAAM_HMAC_DRV,y)
 $(call force, CFG_NXP_CAAM_CMAC_DRV,y)
 $(eval $(call cryphw-enable-drv-hw, SM))
+$(eval $(call cryphw-enable-drv-hw, BLOB))
 
 ifeq ($(CFG_LS),y)
 
