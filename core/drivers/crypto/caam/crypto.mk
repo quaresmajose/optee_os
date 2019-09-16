@@ -180,6 +180,11 @@ endif # !CFG_LS
 
 $(call force, CFG_NXP_CAAM_ACIPHER_DRV, $(call cryphw-one-enabled, RSA ECC DH DSA))
 $(call force, CFG_CRYPTO_DRV_MAC, $(call cryphw-one-enabled, HMAC CMAC))
+
+ifeq ($(CFG_IMX_DEK_HAB),y)
+CFG_PTA_DEK ?= y
+endif
+
 CFG_CRYPTO_DRV_ACIPHER ?= $(CFG_NXP_CAAM_ACIPHER_DRV)
 
 endif # CFG_CRYPTO_DRIVER
