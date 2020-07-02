@@ -544,3 +544,6 @@ endif
 CFG_WITH_SOFTWARE_PRNG ?= y
 endif
 
+ifeq ($(CFG_BUSFREQ),y)
+$(call force,CFG_SM_PLATFORM_HANDLER,y)
+endif
