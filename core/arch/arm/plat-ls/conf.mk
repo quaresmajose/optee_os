@@ -127,7 +127,7 @@ CFG_CRYPTO_SIZE_OPTIMIZATION ?= n
 
 # NXP CAAM support is not enabled by default and can be enabled
 # on the command line
-CFG_NXP_CAAM ?= n
+CFG_NXP_CAAM ?= y
 
 ifneq ($(CFG_NXP_CAAM),y)
 $(call force,CFG_WITH_SOFTWARE_PRNG,y)
