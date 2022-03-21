@@ -521,6 +521,11 @@ endif
 # it with generic crypto API can be enabled.
 CFG_CRYPTO_DRIVER ?= y
 
+# Enable DEK Blob feature by default on i.MX 8mscale family.
+ifeq ($(CFG_MX8M),y)
+CFG_IMX_DEK_HAB ?=y
+endif
+
 else
 
 ifneq (,$(filter y, $(CFG_MX6) $(CFG_MX7) $(CFG_MX7ULP)))
