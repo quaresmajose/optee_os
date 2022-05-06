@@ -255,6 +255,9 @@ int imx7ulp_cpu_suspend(uint32_t power_state __unused, uintptr_t entry,
 {
 	uint32_t i;
 	int ret;
+	uint32_t suspend_ocram_base;
+	struct imx7ulp_pm_info *p = NULL;
+	uint32_t type;
 
 	if (!suspended_init)
 		imx7ulp_suspend_init();
@@ -262,13 +265,11 @@ int imx7ulp_cpu_suspend(uint32_t power_state __unused, uintptr_t entry,
 	 * TODO: move the code to a platform init place, note that
 	 * need to change kernel pm-imx6.c to avoid use LPRAM.
 	 */
-	uint32_t suspend_ocram_base = core_mmu_get_va(LP_OCRAM_START +
-						      SUSPEND_OCRAM_OFFSET,
-						      MEM_AREA_TEE_COHERENT,
-						      BUSFREQ_MAX_SIZE);
-	struct imx7ulp_pm_info *p =
-			(struct imx7ulp_pm_info *)suspend_ocram_base;
-	uint32_t type;
+	suspend_ocram_base = core_mmu_get_va(LP_OCRAM_START +
+					     SUSPEND_OCRAM_OFFSET,
+					     MEM_AREA_TEE_COHERENT,
+					     BUSFREQ_MAX_SIZE);
+	p = (struct imx7ulp_pm_info *)suspend_ocram_base;
 
 	type = (power_state & PSCI_POWER_STATE_TYPE_MASK) >>
 		PSCI_POWER_STATE_TYPE_SHIFT;
