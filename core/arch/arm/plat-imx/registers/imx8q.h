@@ -15,7 +15,6 @@
 #define UART4_BASE	0x5a0a0000
 #define CAAM_BASE	0x31400000
 #define CAAM_SIZE       0x40000
-#define SC_IPC_BASE_SECURE 0x5d1b0000
 #define SC_IPC_SIZE	   0x10000
 #define SECMEM_BASE        0x31800000
 #define SECMEM_SIZE        0x10000
